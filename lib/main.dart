@@ -1,6 +1,8 @@
 import 'package:coding_challenge/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'component/reusable_components.dart';
+
 void main() => runApp(Home());
 
 class Home extends StatelessWidget {
@@ -12,7 +14,7 @@ class Home extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: ListDemo(),
     );
   }
 
