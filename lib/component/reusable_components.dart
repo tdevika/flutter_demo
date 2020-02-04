@@ -27,10 +27,7 @@ class ReusableTextField extends StatelessWidget {
   }
 }
 
-
-
 class ListDemo extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,22 +36,26 @@ class ListDemo extends StatelessWidget {
         itemCount: entries.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            padding: const EdgeInsets.only(top: 10,bottom: 10),
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset('images/a.png',
-                    height: 80.0,
-                    width: 120.0,
+                Container(
+                  margin: EdgeInsets.only(right: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'images/a.png',
+                      height: 80.0,
+                      width: 120.0,
                       fit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Column(
-
-               crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('Title'),
                       SizedBox(height: 8.0),
@@ -66,7 +67,9 @@ class ListDemo extends StatelessWidget {
             ),
           );
         },
-        separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 2,),
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+          thickness: 2,
+        ),
       ),
     );
   }
@@ -74,4 +77,3 @@ class ListDemo extends StatelessWidget {
 
 final List<String> entries = <String>['A', 'B', 'C'];
 final List<int> colorCodes = <int>[600, 500, 100];
-
