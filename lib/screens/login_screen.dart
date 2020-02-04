@@ -1,5 +1,5 @@
 import 'package:coding_challenge/component/reusable_components.dart';
-import 'package:coding_challenge/home_page.dart';
+import 'package:coding_challenge/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return HomePage();
+                      return HomeScreen();
                     }),
                   );
                 },
