@@ -10,66 +10,68 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'HOME',
-                style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
-              ),
-              CircleAvatar(
-                backgroundImage: AssetImage('images/profilepic.jpeg'),
-                radius: 24.0,
-              )
-            ],
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 48.0,
-            child: ReusableTextField(
-              icon: Icons.search,
-              hintText: 'Was suchst du?',
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.all(15.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'HOME',
+                  style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
+                ),
+                CircleAvatar(
+                  backgroundImage: AssetImage('images/profilepic.jpeg'),
+                  radius: 24.0,
+                )
+              ],
             ),
-          ),
-          SizedBox(
-            height: 32.0,
-          ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              'Schnellzugriff',
-              style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 48.0,
+              child: ReusableTextField(
+                icon: Icons.search,
+                hintText: 'Was suchst du?',
               ),
             ),
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: HorizontalCardList(
-                    cardChild: CardIcon(FontAwesomeIcons.car, 'Auto & Zweired'),
-                    color: Color(0xFFF4F4F4)),
+            SizedBox(
+              height: 32.0,
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                'Schnellzugriff',
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Expanded(
-                child: HorizontalCardList(
-                    cardChild: CardIcon(FontAwesomeIcons.car, 'male'),
-                    color: Color(0xFFF4F4F4)),
-              ),
-              Expanded(
-                child: HorizontalCardList(
-                    cardChild: CardIcon(FontAwesomeIcons.car, 'male'),
-                    color: Color(0xFFF4F4F4)),
-              ),
-            ],
-          ),
-        ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: HorizontalCardList(
+                      cardChild: CardIcon(FontAwesomeIcons.car, 'Auto & Zweired'),
+                      color: Color(0xFFF4F4F4)),
+                ),
+                Expanded(
+                  child: HorizontalCardList(
+                      cardChild: CardIcon(FontAwesomeIcons.car, 'male'),
+                      color: Color(0xFFF4F4F4)),
+                ),
+                Expanded(
+                  child: HorizontalCardList(
+                      cardChild: CardIcon(FontAwesomeIcons.car, 'male'),
+                      color: Color(0xFFF4F4F4)),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
