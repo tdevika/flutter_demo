@@ -1,5 +1,5 @@
-import 'package:coding_challenge/component/reusable_components.dart';
-import 'package:coding_challenge/home/home_screen.dart';
+import 'package:coding_challenge/component/components.dart';
+import 'package:coding_challenge/screens/home_screen.dart';
 import 'package:coding_challenge/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
