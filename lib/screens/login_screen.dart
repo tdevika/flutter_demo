@@ -1,5 +1,6 @@
 import 'package:coding_challenge/component/reusable_components.dart';
 import 'package:coding_challenge/home/home_screen.dart';
+import 'package:coding_challenge/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   loginBody() => Container(
-        margin: EdgeInsets.only(left: 20.0, right: 20.0),
+        margin: EdgeInsets.only(left: kBorderMargin, right: kBorderMargin),
         child: Column(
           children: <Widget>[
             loginFields(),
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ButtonTheme(
-              height: 45.0,
+              height: kButtonHeight,
               child: RaisedButton(
                 onPressed: () {
                   Navigator.push(
@@ -114,14 +115,21 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
                 height: 48.0,
-                child: ReusableTextField(icon: Icons.email, hintText: 'Email')),
+                child: ReusableTextField(
+                  icon: Icons.email,
+                  hintText: 'Email',
+                  iconColor: Colors.black,
+                )),
             SizedBox(
               height: 20.0,
             ),
             Container(
                 height: 48.0,
-                child:
-                    ReusableTextField(icon: Icons.lock, hintText: 'Password')),
+                child: ReusableTextField(
+                  icon: Icons.lock,
+                  hintText: 'Password',
+                  iconColor: Colors.black,
+                )),
           ],
         ),
       );

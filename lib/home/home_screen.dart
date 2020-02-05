@@ -1,22 +1,21 @@
-import 'package:coding_challenge/card_list.dart';
+import 'package:coding_challenge/component/reusable_components.dart';
+import 'package:coding_challenge/utilities/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  CardList cardList = CardList();
+var isHomeTabPressed;
 
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child:
-            /*Container(
-          margin: EdgeInsets.all(15.0),
+        child: Container(
+          margin: EdgeInsets.all(15),
           child: Column(
             children: <Widget>[
               Row(
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   Text(
                     'HOME',
-                    style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
+                    style: kHomeTextStyle,
                   ),
                   CircleAvatar(
                     backgroundImage: AssetImage('images/profilepic.jpeg'),
@@ -40,180 +39,121 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ReusableTextField(
                   icon: Icons.search,
                   hintText: 'Was suchst du?',
+                  iconColor: Colors.grey,
                 ),
               ),
-              SizedBox(
-                height: 32.0,
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  'Schnellzugriff',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),*/
-            Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Container(
-                  color: Colors.indigo,
-                  margin: EdgeInsets.all(10.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Icon(
-                      FontAwesomeIcons.car,
-                      size: 20.0,
-                      color: Colors.black,
-                    ),
-                  )),
-            ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-                      child: Container(
-                        width: 120.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 25.0, horizontal: 3.0),
-                        child: HorizontalCardList(
-                            cardChild: CardIcon(
-                                FontAwesomeIcons.car, 'Auto & Zweired'),
-                            color: Color(0xFFF4F4F4)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-                      child: Container(
-                        width: 120.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 25.0, horizontal: 3.0),
-                        child: HorizontalCardList(
-                            cardChild: CardIcon(
-                                FontAwesomeIcons.car, 'Auto & Zweired'),
-                            color: Color(0xFFF4F4F4)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-                      child: Container(
-                        width: 120.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 25.0, horizontal: 3.0),
-                        child: HorizontalCardList(
-                            cardChild: CardIcon(
-                                FontAwesomeIcons.car, 'Auto & Zweired'),
-                            color: Color(0xFFF4F4F4)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-                      child: Container(
-                        width: 120.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 25.0, horizontal: 3.0),
-                        child: HorizontalCardList(
-                            cardChild: CardIcon(
-                                FontAwesomeIcons.car, 'Auto & Zweired'),
-                            color: Color(0xFFF4F4F4)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                width: 120.0,
-                margin: EdgeInsets.symmetric(vertical: 25.0, horizontal: 3.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(
-                        width: 3,
-                        color: Colors.green,
-                        style: BorderStyle.solid)),
-                child: Icon(
-                  FontAwesomeIcons.car,
-                  size: 20.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ],
-        ),
-        /* Align(
-                alignment: Alignment.bottomLeft,
-
-                child: Text(
-                  'Häufig aufgerufen',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
+              Expanded(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Schnellzugriff',
+                    style: kHeaderTextStyle,
                   ),
                 ),
               ),
-
+              Expanded(
+                flex: 1,
+                child: HorizontalListContainer(),
+              ),
+              Expanded(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Häufig aufgerufen',
+                    style: kHeaderTextStyle,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 4,
+                child: VerticalListContainer(),
+              ),
+              Expanded(
+                child: Scaffold(
+                  floatingActionButtonLocation:
+                      FloatingActionButtonLocation.centerDocked,
+                  floatingActionButton: FloatingActionButton(
+                    backgroundColor: Colors.black,
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {},
+                  ),
+                  bottomNavigationBar: BottomAppBar(
+                    child: new Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.home,
+                              ),
+                              color: Colors.black,
+                              onPressed: () {},
+                            ),
+                            Text('Home',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.menu,
+                              ),
+                              color: Colors.grey,
+                              onPressed: () {},
+                            ),
+                            Text('Gewerke',
+                                style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                              ),
+                              color: Colors.grey,
+                              onPressed: () {},
+                            ),
+                            Text('Favoriten',
+                                style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.home,
+                                size: 24,
+                              ),
+                              color: Colors.grey,
+                              onPressed: () {},
+                            ),
+                            Text('Chat', style: TextStyle(color: Colors.grey)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    shape: CircularNotchedRectangle(),
+                    color: Colors.transparent,
+                    notchMargin: 4.0,
+                    elevation: 0,
+                  ),
+                ),
+              )
             ],
           ),
-        ),*/
-      ),
-    );
-  }
-}
-
-class HorizontalCardList extends StatelessWidget {
-  final Widget cardChild;
-  final Color color;
-
-  HorizontalCardList({this.cardChild, this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      child: cardChild,
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-    );
-  }
-}
-
-class CardIcon extends StatelessWidget {
-  final IconData iconData;
-  final String label;
-
-  CardIcon(this.iconData, this.label);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(
-          iconData,
-          size: 20.0,
-          color: Colors.black,
         ),
-        SizedBox(
-          height: 15.0,
-        ),
-        Text(
-          label,
-          style: TextStyle(fontSize: 10.0, color: Color(0xFF90909A)),
-        )
-      ],
+      ),
     );
   }
 }
